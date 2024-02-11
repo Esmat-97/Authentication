@@ -11,15 +11,8 @@
 
     <?php
 
-$user_tit=$_COOKIE['usertitle'];
-
-echo $user_tit;
-
-
-
                 /*                    */
                 
-
 
 $host = "localhost";
 $username = "root";
@@ -35,8 +28,11 @@ else{
 }
 
 
-                        /*                */
+                    /*                */
 
+
+
+$user_tit=$_COOKIE['usertitle'];
 
                         
 // echo " SELECT * FROM users WHERE title='$user_tit' ";
@@ -56,7 +52,6 @@ else{
 
                          /*                */
 
-
    $finish=mysqli_fetch_array($final);
      $give=$finish['title'];
   
@@ -65,8 +60,47 @@ else{
 
 
 <h1> <?php echo "welcome". $give."<br>" ?></h1>
-    <h1>home</h1>
-    <h1>home</h1>
+ 
+ <div>
+    
+    <?php if($give == "mohamed"){
+
+      echo " <h1>the admin page</h1>
+      <button>delete</button>
+      <button>add to cart</button> "; 
+                     
+  
+$all_users = mysqli_query($con," SELECT * FROM users ");
+
+                       ?>
+       
+       
+       <?php
+      while($row = mysqli_fetch_assoc($all_users)) { 
+         
+        ?>
+
+
+
+ <div class="row row-cols-3 row-cols-md-3  row-cols-lg-4 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="card-text"> name :<?php echo $row["title"]; ?> </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+        <?php
+      }
+    }
+        ?>
+                    
+
+               
+    
+                    </div>
    
     <a href="logout.php">logout</a>
 </body>

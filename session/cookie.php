@@ -39,6 +39,7 @@ if(mysqli_num_rows($final) > 0){
 
     $iti=mysqli_fetch_array($final);
  
+    echo $iti;
     
     setcookie("usertitle",$iti['title'],time() + 60*60);
     
